@@ -2,7 +2,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<style type="text/css">
+<head>
+<title>Formularz dodawania palety</title>
+<style>
     .error {
         background-color: red;
     }
@@ -107,34 +109,69 @@
     {
         background: #109177;
     }
-</style>
-<body>
+    a.button{
+        display:inline-block;
+        padding:0.46em 1.6em;
+        border:0.1em solid #000000;
+        margin:0 0.2em 0.2em 0;
+        border-radius:0.12em;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        font-weight:300;
+        color:#000000;
+        text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+        background-color:#FFFFFF;
+        text-align:center;
+        transition: all 0.15s;
+    }
+    a.button:hover{
+        text-shadow: 0 0 2em rgba(255,255,255,1);
+        color:#FFFFFF;
+        border-color:#FFFFFF;
+    }
+    @media all and (max-width:30em){
+        a.button{
+            display:block;
+            margin:0.4em auto;
+        }
+    }
+    .btn-container {
+        width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+    }
+</style>
+</head>
+<body>
 <div class="form-style-5">
     <legend> Formularz magazynowania</legend>
     <form:form method="post" modelAttribute="palette" action="/warehousing/form/palette">
         <legend><span class="number">2</span>Dane palety</legend>
         <p hidden><form:input path="id"/></p>
-        <label for="height">Wysokość</label>
+        <label for="height">Wysokość (cm)</label>
         <form:input path="height" id="height"/>
-        <form:errors path="height" cssClass="error"/>
-        <label for="width">Szerokość</label>
+        <label for="width">Szerokość (cm)</label>
         <form:input path="width" id="width"/>
-        <form:errors path="width" cssClass="error"/>
-        <label for="length">Długość</label>
+        <label for="length">Długość (cm)</label>
         <form:input path="length" id="length"/>
-        <form:errors path="length" cssClass="error"/>
-        <label for="weight">Waga *</label>
-        <form:input path="weight" id="weight"/>
+        <label for="weight">Waga (kg)*</label>
         <form:errors path="weight" cssClass="error"/>
+        <form:input path="weight" id="weight"/>
         <label for="beginningOfStorage">Początek składowania *</label>
-        <form:input path="beginningOfStorage" id="beginningOfStorage"/>
         <form:errors path="beginningOfStorage" cssClass="error"/>
+        <form:input path="beginningOfStorage" id="beginningOfStorage"/>
         <label for="expectedEndOfStorage">Przewidywany koniec składowania *</label>
-        <form:input path="expectedEndOfStorage" id="expectedEndOfStorage"/>
         <form:errors path="expectedEndOfStorage" cssClass="error"/>
+        <form:input path="expectedEndOfStorage" id="expectedEndOfStorage"/>
         <input type="submit" value="Zatwierdź i przejdź dalej">
     </form:form>
+</div>
+<div class="btn-container">
+    <a href="/" class="button" style="background-color:#42cc8c;">Wróć do strony głównej</a>
 </div>
 </body>
 </html>

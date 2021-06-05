@@ -2,7 +2,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<style type="text/css">
+<head>
+<title>Formularz dodawania kontrahenta</title>
+<style>
     .error {
         background-color: red;
     }
@@ -107,34 +109,69 @@
     {
         background: #109177;
     }
-</style>
-<body>
+    a.button{
+        display:inline-block;
+        padding:0.46em 1.6em;
+        border:0.1em solid #000000;
+        margin:0 0.2em 0.2em 0;
+        border-radius:0.12em;
+        box-sizing: border-box;
+        text-decoration:none;
+        font-family:'Roboto',sans-serif;
+        font-weight:300;
+        color:#000000;
+        text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+        background-color:#FFFFFF;
+        text-align:center;
+        transition: all 0.15s;
+    }
+    a.button:hover{
+        text-shadow: 0 0 2em rgba(255,255,255,1);
+        color:#FFFFFF;
+        border-color:#FFFFFF;
+    }
+    @media all and (max-width:30em){
+        a.button{
+            display:block;
+            margin:0.4em auto;
+        }
+    }
+    .btn-container {
+        width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
+    }
+</style>
+</head>
+<body>
 <div class="form-style-5">
     <legend> Formularz magazynowania</legend>
     <form:form method="post" modelAttribute="company" action="/warehousing/form/company">
         <legend><span class="number">1</span> Kontrahenci</legend>
         <p hidden><form:input path="id"/></p>
-            <label for="name">Nazwa firmy</label>
-            <form:input path="name" id="name" placeholder="Nazwa firmy *"/>
+            <label for="name">Nazwa firmy *</label>
             <form:errors path="name" cssClass="error"/>
-            <label for="nip">NIP</label>
-            <form:input path="nip" id="nip" placeholder="NIP *"/>
+            <form:input path="name" id="name"/>
+            <label for="nip">NIP *</label>
             <form:errors path="nip" cssClass="error"/>
-            <label for="email">E-mail</label>
-            <form:input path="email" id="email" placeholder="E-mail *"/>
+            <form:input path="nip" id="nip"/>
+            <label for="email">E-mail *</label>
             <form:errors path="email" cssClass="error"/>
+            <form:input path="email" id="email"/>
             <label for="street">Ulica</label>
-            <form:input path="street" id="street" placeholder="Ulica"/>
-            <form:errors path="street" cssClass="error"/>
+            <form:input path="street" id="street"/>
             <label for="postcode">Kod pocztowy</label>
-            <form:input path="postcode" id="postcode" placeholder="Kod pocztowy"/>
-            <form:errors path="postcode" cssClass="error"/>
+            <form:input path="postcode" id="postcode"/>
             <label for="city">Miejscowość</label>
-            <form:input path="city" id="city" placeholder="Miejscowość"/>
-            <form:errors path="city" cssClass="error"/>
+            <form:input path="city" id="city"/>
             <input type="submit" value="Zatwierdź i przejdź dalej">
     </form:form>
+</div>
+<div class="btn-container">
+    <a href="/" class="button" style="background-color:#42cc8c;">Wróć do strony głównej</a>
 </div>
 </body>
 </html>

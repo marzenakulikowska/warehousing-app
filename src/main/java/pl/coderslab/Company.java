@@ -11,7 +11,7 @@ import java.util.List;
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @NotBlank
     private String name;
     @NIP
@@ -24,13 +24,21 @@ public class Company {
     private String postcode;
     private String city;
     @OneToMany(mappedBy = "company")
-    private List<Warehousing> warehousingList = new ArrayList<>();
+    private List<Cargo> cargoList = new ArrayList<>();
 
-    public int getId() {
+    public List<Cargo> getCargoList() {
+        return cargoList;
+    }
+
+    public void setCargoList(List<Cargo> cargoList) {
+        this.cargoList = cargoList;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,5 +88,19 @@ public class Company {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nip='" + nip + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", city='" + city + '\'' +
+                ", cargoList=" + cargoList +
+                '}';
     }
 }
